@@ -1,12 +1,14 @@
 # 前端JS window跳转
 
-### 遇到的情况是：
+### 一、问题概述
 
 子窗口的一些操作需要一并修改父窗口的一些信息显示，但是调用总是报错："XXX is not a function"
 
+### 二、处理方案
+
 由于使用的是 Ext.js 框架，而 Ext.js 代码都是包含在 Ext.onReady 之中，该方法即表示：在页面完毕（onload 方法被调用之前以及图片被装载之前）调用初始化函数，导致因为作用域的问题，一直都找不到变量。后来把变量放到最外层即可解决。
 
-#### 子窗口：
+#### 2.1 子窗口：
 
 ````javascript
 success:function(form,action){
@@ -17,7 +19,7 @@ var world = function(){
 }
 ````
 
-#### 父窗口：
+#### 2.2 父窗口：
 
 ````javascript
 function Test(){
@@ -25,7 +27,7 @@ function Test(){
 }
 ````
 
-### 顺带一些JS原生 window 跳转汇总：
+### 三、顺带一些JS原生 window 跳转汇总
 
 在应用有 frameset 或者 iframe 的页面时：
 parent 是父窗口；

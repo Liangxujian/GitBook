@@ -1,6 +1,6 @@
 # MySQL 的 drop、truncate、delete
 
-### 老大 —— drop（删除表）
+## 老大 —— drop（删除表）
 
 出没场合：`drop table tb` （tb 表示数据表的名字,下同）
 
@@ -8,7 +8,7 @@
 e.g. 一个班就是一个表，学生就是表中的数据，学生的职务就是定义
 `drop table class`，就是把整个班移除。学生和职务都消失
 
-### 老二 —— truncate（清空表）
+## 老二 —— truncate（清空表）
 
 出没场合：`truncate table tb`
 
@@ -16,10 +16,10 @@ e.g. 一个班就是一个表，学生就是表中的数据，学生的职务就
 同样也是一个班，他只去除所有的学生。班还在，职务还在，如果有新增的学生可以进去，也可以分配上职务。
 `PS：truncate 后主键 ID 会重新从 1 开始分配`
 
-### 老三 —— delete（删除行记录）
+## 老三 —— delete（删除行记录）
 
 出没场合：`delete table tb`
-虽然也是删除整个表的数据，但是过程是痛苦的（系统一行一行地删，效率较truncate低）
+虽然也是删除整个表的数据，但是过程是痛苦的（系统一行一行地删，效率较 truncate 低）
 或
 `delete table tb where 条件`
 

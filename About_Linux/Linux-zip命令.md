@@ -3,13 +3,13 @@
 >Linux zip 命令用于压缩文件。
 >zip 是个使用广泛的压缩程序，文件经它压缩后会另外产生具有".zip"扩展名的压缩文件。
 
-#### 一、语法
+## 一、语法
 
 ````bash
 zip [-AcdDfFghjJKlLmoqrSTuvVwXyz$][-b <工作目录>][-ll][-n <字尾字符串>][-t <日期时间>][-<压缩效率>][压缩文件][文件...][-i <范本样式>][-x <范本样式>]
 ````
 
-#### 二、参数
+## 二、参数
 
 <kbd>-A</kbd>：调整可执行的自动解压缩文件
 
@@ -79,7 +79,7 @@ zip [-AcdDfFghjJKlLmoqrSTuvVwXyz$][-b <工作目录>][-ll][-n <字尾字符串>]
 
 <kbd>-<压缩效率></kbd>：压缩效率是一个介于 1-9 的数值
 
-#### 三、命令示例
+## 三、命令示例
 
 ````bash
 zip -q -r test.zip test.txt # 将本目录下的 test.txt 文件压缩为 test.zip（压缩文件夹也可以如此操作）
@@ -87,5 +87,7 @@ zip -q -r test.zip test.txt # 将本目录下的 test.txt 文件压缩为 test.z
 zip -q -r html.zip /home/html # 将 /home/html/ 这个目录下所有文件和文件夹打包为当前目录下的 html.zip
 zip -q -r html.zip * # 将本目录下所有文件和文件夹打包为当前目录下的 html.zip
 zip -dv cp.zip a.c # 从压缩文件 cp.zip 中删除文件 a.c
+
+unzip test.zip # 解压到当前文件夹
 ````
 

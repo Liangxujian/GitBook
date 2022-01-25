@@ -1,8 +1,8 @@
-#### Mybatis 常见查询
+# Mybatis 常见查询
 
-本篇笔记参考自博客：https://www.cnblogs.com/libra0920/p/6208587.html
+> 本篇笔记参考自博客：[MyBatis学习-映射文件标签篇(select、resultMap)](https://www.cnblogs.com/libra0920/p/6208587.html)
 
-##### 一、 映射文件的顶级元素
+### 一、 映射文件的顶级元素
 
 * **select：**映射查询语句
 * **insert：**映射插入语句
@@ -13,7 +13,7 @@
 * cache：配置给定命名空间的缓存
 * cache-ref：从其他命名空间引用缓存配置
 
-##### 二、select 标签的属性信息
+### 二、select 标签的属性信息
 
 ````xml
 <select id="selectUser" 
@@ -63,7 +63,7 @@
 -->
 ````
 
-##### 三、resultMap 标签的属性信息
+### 三、resultMap 标签的属性信息
 
 ````xml
 <!-- 
@@ -121,7 +121,7 @@
 </resultMap>
 ````
 
-##### 四、insert 标签的属性信息
+### 四、insert 标签的属性信息
 
 ````xml
 <insert id="insertProject" 
@@ -141,7 +141,7 @@
 -->
 ````
 
-##### 五、重用 sql 标签
+### 五、重用 sql 标签
 
 ````xml
 <sql id="userColumns">id,username,password</sql>
@@ -158,7 +158,7 @@
 </select>
 ````
 
-##### 六、完全限定名使用别名替代
+### 六、完全限定名使用别名替代
 
 在 mybatis 配置文件中，使用如下配置
 
@@ -170,7 +170,7 @@
 
 那么在 Mapper 中，可以直接使用 projectInfo，即表示 com.enh.bean.ProjectInfo
 
-##### 七、命名空间
+### 七、命名空间
 
 每个sql映射文件的要元素中，都需要指定一个名称空间，用以确保每个映射语句的id属性不会重复。如
 

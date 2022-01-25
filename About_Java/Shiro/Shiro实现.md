@@ -94,7 +94,7 @@ shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 System.out.println("Shiro拦截器工厂类注入成功");
 ````
 
-![1559808870813](D:\GitBook\About_Java\Shiro\assets\1559808870813.png)
+![1559808870813](D:/GitBook/About_Java/Shiro/assets/1559808870813.png)
 
 ### 二、CustomRealm.java
 
@@ -154,7 +154,7 @@ CustomRealm 类继承了 AuthorizingRealm，这里需要区分两个非常类似
 
 根据之前项目可知，Shiro 权限控制的设计思路为：`用户`、`角色`、`权限`均为多对多关系，Shiro 需要根据前端传来的用户名和密码，首先判断登录的用户是否合法，得到对应的角色；然后等到用户继续请求其他资源的时候，再根据角色用户进行授权。而这个过程就是Realm的实现过程。
 
-![1559808870815](D:\GitBook\About_Java\Shiro\assets\1559808870815.png)
+![1559808870815](D:/GitBook/About_Java/Shiro/assets/1559808870815.png)
 
 ### 三、会话
 

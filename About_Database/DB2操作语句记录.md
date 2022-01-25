@@ -1,0 +1,86 @@
+# DB2 操作语句记录
+
+## 一、清空表
+
+```sql
+ALTER TABLE 表名 NOT LOGGED INITIALLY WITH EMPTY TABLE
+ALTER TABLE TB_CT_OPT_LOG_bak ACTIVATE NOT LOGGED INITIALLY WITH EMPTY TABLE
+```
+
+## 二、查询前1000条数据
+
+```sql
+SELECT * FROM 表名 FETCH FIRST 1000 ROWS ONLY
+```
+
+## 三、数据迁移
+
+### 3.1 Excel 转 csv
+
+### 3.2 SQL 语句操作
+
+DB2 备份表 A 到表 A_BAK 中
+
+```sql
+-- 备份表A结构到A_BAK，但是会缺失主键等信息，并不建议
+CREATE TABLE A_BAK AS (SELECT * FROM A) definition only
+
+-- 建议新建备份表（比较灵活）
+INSERT INTO A_BAK SELECT * FROM A
+```
+
+PS：如果备份表字段数量与原表有差异，则需要：
+
+1. `SELECT *`改为具体需要备份的字段（ee 插入 dd，其他字段跳过插入）
+
+```sql
+INSERT INTO A_BAK(aa,bb,dd) SELECT aa,bb,ee FROM A
+```
+
+2. 在对应多出字段的位置加上常数作为默认值填充（具体填充数据看实际字段类型）
+   拓展：由此可知道后面的 SELECT 可以为多表组合查询的结果，注意具体字段名称要对应上，以及字段的长度也要考虑在内
+   PS：如果字段转换较难处理（varchar 转 int 等），且主键不用自动生成，数据查询 -> 导出EXCEL -> 转 csv -> 导入（注意此时数据要全插入，不能过滤）
+
+```sql
+INSERT INTO AICJXOPT.TB_CT_CONTACT_CREDIT(CT_ID, CA_ID, PROFESSIONAL, PART_TIME_STAFF, TOTAL_NUMBER) 
+select replace(AICJXOPT.FN_GEN_GUID(),'-',''),replace(STRANSID,'-',''),NFULLTIMENUM,NPARTTIMENUM,NFULLTIMENUM+NPARTTIMENUM 
+from TB_CNTR_OOC_ENTDEPTINFO,SYSIBM.SYSDUMMY1 
+where STRANSID not in (
+	select b.STRANSID
+	from TB_CT_CADC_APPLICATION a,TB_CNTR_OOC_ENTBASEINFO b
+	where b.SENTNAME=a.ENTERPRISE_NAME and Integer(b.SYEAR)-1=a.APP_YEAR)
+```
+
+## 四、表结构修改
+
+```sql
+-- 增加字段
+ALTER  TABLE 表名 ADD 新增字段名 VARCHAR(20)
+ALTER  TABLE TB_CT_SOCIAL_RESPONSIBILITY ADD UPDATE_TIMESTAMP VARCHAR(20)
+
+-- 快速清空表
+ALTER TABLE 表名 NOT LOGGED INITIALLY WITH EMPTY TABLE
+ALTER TABLE TB_CT_OPT_LOG_bak ACTIVATE NOT LOGGED INITIALLY WITH EMPTY TABLE
+
+-- 删除表
+DROP TABLE 表名
+DROP TABLE TB_CT_CADC_APPLICATION
+```
+
+## 五、字段类型操作
+
+> 字符串类型转换 + 字符串替换
+
+```sql
+select replace(x.STRANSID,'-',''),x.SACCEPTID,x.SENTREGID,x.SENTNAME,Integer(x.SYEAR),Integer(x.SBESUCCESS),x.SACCEPTERNAME,
+    x.DACCEPTDATE,Integer(x.SSOURCETAG),x.SENTMAINID,x.SACCEPTUNITNAME,x.SACCEPTUNITID,Integer(x.SENTTYPECODE),
+    x.SADDR,x.DREGDATE,x.POSTAL,x.NREGCAPITAL,y.SLAWMAN,y.SLAWMANTEL,y.SHANDLEMANTEL,Integer(x.NSTAFFCOUNT),
+    y.SFAX,x.SRANGE,y.SHANDLEMAN,y.SMSGTEL,y.SHANDLEDEPT,y.SEMAIL,x.SCOUNTRYTAXREGNO,x.SLOCALTAXREGNO,
+    x.SQTSCODE,x.SMONEYTYPECODE,Integer(x.SSENTMAINTYPE),Integer(x.SBACKUPTAG) 
+from TB_CNTR_OOC_ENTBASEINFO x,TB_CNTR_OOC_LINKMANINFO y 
+where x.STRANSID=y.STRANSID and x.STRANSID not in (
+select b.STRANSID
+from TB_CT_CADC_APPLICATION a,TB_CNTR_OOC_ENTBASEINFO b
+where b.SENTNAME=a.ENTERPRISE_NAME and Integer(b.SYEAR)+1=a.APP_YEAR)
+```
+

@@ -1,4 +1,17 @@
 # 目录
 
-*  
-
+*  [表锁定、行锁定、分区和分表.md](表锁定、行锁定、分区和分表.md) 
+*  [传统数据库瓶颈（MySQL）.md](传统数据库瓶颈（MySQL）.md) 
+*  [二叉树.md](二叉树.md) 
+*  [数据库基础.md](数据库基础.md) 
+*  [数据库开发规范和技巧（MySQL）.md](数据库开发规范和技巧（MySQL）.md) 
+*  [数据库索引SQL.md](数据库索引SQL.md) 
+*  [数据库MySQL VS Oracle.md](数据库MySQL VS Oracle.md) 
+*  [MySQL操作语句汇总.md](MySQL操作语句汇总.md) 
+*  [MySQL的drop、truncate、delete.md](MySQL的drop、truncate、delete.md) 
+*  [MySQL视图.md](MySQL视图.md) 
+*  [MySQL数据库查询优化.md](MySQL数据库查询优化.md) 
+*  [MySQL数据库配置及命令控制.md](MySQL数据库配置及命令控制.md) 
+*  [MySQL特殊操作语句汇总.md](MySQL特殊操作语句汇总.md) 
+*  [MySQL字段类型对应Java.md](MySQL字段类型对应Java.md) 
+*  [Oracle查询语句记录.md](Oracle查询语句记录.md) 

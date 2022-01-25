@@ -1,7 +1,7 @@
 # Shiro 介绍
 
-本篇笔记参考自博客：[shiro权限控制（一）：shiro介绍以及整合SSM框架](https://www.cnblogs.com/tohxyblog/p/6870261.html)
-
+> 本篇笔记参考自博客：[shiro权限控制（一）：shiro介绍以及整合SSM框架](https://www.cnblogs.com/tohxyblog/p/6870261.html)
+>
 > Shiro 安全框架是目前为止作为登录注册最常用的框架，因为它十分的强大简单，提供了认证、授权、加密和会话管理等功能 。
 
 ### 一、Shiro 的作用
@@ -20,7 +20,7 @@
 * Session Management(会话管理)：管理用户特定的会话，即使在非 Web 或 EJB 应用程序。
 * Cryptography(加密)：通过使用加密算法保持数据安全。
 
-![1559808870814](D:\GitBook\About_Java\Shiro\assets\1559808870814.png)
+![1559808870814](D:/GitBook/About_Java/Shiro/assets/1559808870814.png)
 
 ### 三、Shiro 的三个核心组件
 

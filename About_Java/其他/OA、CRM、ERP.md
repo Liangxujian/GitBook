@@ -1,4 +1,4 @@
-#### OA、CRM、ERP
+# OA、CRM、ERP
 
 * OA（Office Automation，办公自动化） —— 负责组织行为管理
 * CRM（Customer Relationship Management ，客户关系管理） —— 负责客户经营

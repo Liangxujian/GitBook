@@ -1,6 +1,6 @@
-#### pom.xml 详解
+# pom.xml 详解
 
-本篇笔记参考自博客：[https://blog.csdn.net/u010425776/article/details/52027706](https://blog.csdn.net/u010425776/article/details/52027706)
+> 本篇笔记参考自博客：[Maven使用详解](https://blog.csdn.net/u010425776/article/details/52027706)
 
 pom.xml 是 Maven 的核心，你的项目需要什么 Jar 包就在 pom.xml 里面配置。当编译项目时 Maven 读取该文件，并从仓库中下载相应的 Jar 包。
 

@@ -1,6 +1,6 @@
-#### Java常见类
+# Java常见类
 
-##### 一、Java Object 超类
+### 一、Java Object 超类
 
 1. Object 超类自带的一些方法：
 
@@ -21,7 +21,7 @@ public class Object {
 }
 ````
 
-##### 二、String、StringBuffer、StringBuilder
+### 二、String、StringBuffer、StringBuilder
 
 1. 三者都是用来处理字符串的类
 2. 三者执行速度比较（例如字符串的组合速度）：**StringBuilder > StringBuffer > String**
@@ -35,7 +35,7 @@ public class Object {
 * 不考虑线程安全处理字符串缓冲区下大量数据 → StringBuilder
 * 需考虑线程安全处理字符串缓冲区下大量数据 → StringBuffer
 
-##### 三、特殊的 String 类
+### 三、特殊的 String 类
 
 1. 虽然是引用类型，但是可以像基础数据类型一样直接赋值（`String s = "";`）
 2. 不可被继承，String 类被`final`修饰

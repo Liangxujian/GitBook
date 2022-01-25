@@ -1,4 +1,4 @@
-#### 读取 Properties 文件
+# 读取 Properties 文件
 
 ````java
 /**

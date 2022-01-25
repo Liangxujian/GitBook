@@ -1,10 +1,10 @@
-#### Cookie 和 Session
+# Cookie 和 Session
 
-本篇笔记部分参考自博客：https://www.cnblogs.com/ityouknow/p/10856177.html
+> 本篇笔记部分参考自博客：[你真的了解 Cookie 和 Session 吗?](https://www.cnblogs.com/ityouknow/p/10856177.html)
 
 什么是 Cookie？什么是 Session？这两者的区别是什么？
 
-##### 一、什么是 Cookie
+### 一、什么是 Cookie
 
 HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）**是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。**通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议记录稳定的状态信息成为了可能。
 
@@ -14,11 +14,11 @@ Cookie 主要用于以下三个方面：
 - 个性化设置（如用户自定义设置、主题等）
 - 浏览器行为跟踪（如跟踪分析用户行为等）
 
-##### 二、什么是 Session
+### 二、什么是 Session
 
 Session 代表着服务器和客户端一次会话的过程。Session 对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的 Web 页之间跳转时，存储在 Session 对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。当客户端关闭会话，或者 Session 超时失效时会话结束。
 
-##### 三、Cookie 和 Session 的区别
+### 三、Cookie 和 Session 的区别
 
 - 作用范围不同，Cookie 保存在客户端（浏览器），Session 保存在服务器端。
 - 存取方式的不同，Cookie 只能保存 ASCII，Session 可以存任意数据类型，一般情况下我们可以在 Session 中保持一些常用变量信息，比如说 UserId 等。
@@ -26,7 +26,7 @@ Session 代表着服务器和客户端一次会话的过程。Session 对象存�
 - 隐私策略不同，Cookie 存储在客户端，比较容易遭到不法获取，早期有人将用户的登录名和密码存储在 Cookie 中导致信息被窃取；Session 存储在服务端，安全性相对 Cookie 要好一些。
 - 存储大小不同， 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie。
 
-##### 四、Cookie 和 Session 在使用时的关联
+### 四、Cookie 和 Session 在使用时的关联
 
 ![1563762638165](D:\GitBook\About_Java\JavaWeb开发\assets\1563762638165.png)
 
@@ -36,7 +36,7 @@ Session 代表着服务器和客户端一次会话的过程。Session 对象存�
 
 根据以上流程可知，SessionID 是连接 Cookie 和 Session 的一道桥梁，大部分系统也是根据此原理来验证用户登录状态。
 
-##### 五、用户浏览器禁止 Cookie 后的处理方案
+### 五、用户浏览器禁止 Cookie 后的处理方案
 
 * 方案一
 
@@ -50,7 +50,7 @@ Session 代表着服务器和客户端一次会话的过程。Session 对象存�
 
   当用户第一次登录后，服务器根据提交的用户信息生成一个 Token，响应时将 Token 返回给客户端，以后客户端每次请求只需带上这个 Token 前来请求数据即可，无需再次登录验证。
 
-##### 六、分布式 Session 问题
+### 六、分布式 Session 问题
 
 有些 JavaWeb 项目为了可以支撑更大的流量，在后端往往配置了多台服务器共同来支撑前端用户请求，这时需处理解决：用户在 A 服务器登录，但是第二次请求跑到 B 服务器，导致出现登录失效问题。
 

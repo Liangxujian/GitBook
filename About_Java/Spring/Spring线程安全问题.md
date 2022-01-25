@@ -1,4 +1,4 @@
-#### Spring 线程安全性问题
+# Spring 线程安全性问题
 
 由于 Spring 管理的 Bean 对象默认是单例模式，也就是说，面对不同的 request 请求，系统都会用原有的 instance 去处理，当多个线程调用它的时候，它里面的 instance 变量就不是线程安全的了，会发生窜数据的问题。
 
@@ -11,7 +11,7 @@
 
 *PS：我们在使用 Spring 开发 web 时要注意：默认 Controller、Dao、Service 都是单例的。*
 
-##### ThreadLocal 示例和说明
+### ThreadLocal 示例和说明
 
 [ThreadLocal.md]( [ThreadLocal.md](..\Java高并发拓展\ThreadLocal.md) )
 

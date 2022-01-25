@@ -1,39 +1,39 @@
 # Linux 忘记 root 密码
 
-本篇笔记参考自博客：[CentOS7.2 忘记root密码及重置root密码的简单处理方法](https://www.jb51.net/article/146320.htm)
+> 本篇笔记参考自博客：[CentOS7.2 忘记root密码及重置root密码的简单处理方法](https://www.jb51.net/article/146320.htm)
 
 1、在启动 GRUB 菜单中选择编辑选项，按键 "e" 进入编辑
 
-![2018082709452535](D:\GitBook\About_Linux\assets\2018082709452535.png)
+![2018082709452535](assets/2018082709452535.png)
 
 2、大约在第 16 行找到 "ro" ，将 "ro" 修改为 " rw init=/sysroot/bin/bash "
 
-![2018082709452536](D:\GitBook\About_Linux\assets\2018082709452536.png)
+![2018082709452536](assets/2018082709452536.png)
 
 3、同时按下 " ctrl + x "，进入单用户模式
 
-![2018082709452537](D:\GitBook\About_Linux\assets\2018082709452537.png)
+![2018082709452537](assets/2018082709452537.png)
 
 4、用 "chroot /sysroot " 命令进入系统
 
-![2018082709452638](D:\GitBook\About_Linux\assets\2018082709452638.png)
+![2018082709452638](assets/2018082709452638.png)
 
 5、" passwd root " 重置 root 密码
 
-![2018082709452739](D:\GitBook\About_Linux\assets\2018082709452739.png)
+![2018082709452739](assets/2018082709452739.png)
 
 6、用 " touch /.autorelabel " 更新 SELinux 信息
 
-![2018082709452740](D:\GitBook\About_Linux\assets\2018082709452740.png)
+![2018082709452740](assets/2018082709452740.png)
 
 7、输入 " exit "退出 chroot
 
-![2018082709452841](D:\GitBook\About_Linux\assets\2018082709452841.png)
+![2018082709452841](assets/2018082709452841.png)
 
 8、用 " reboot -f " 命令重启你的系统
 
-![2018082709452842](D:\GitBook\About_Linux\assets\2018082709452842.png)
+![2018082709452842](assets/2018082709452842.png)
 
 9、登陆系统测试
 
-![2018082709452843](D:\GitBook\About_Linux\assets\2018082709452843.png)
+![2018082709452843](assets/2018082709452843.png)

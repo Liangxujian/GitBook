@@ -1,6 +1,6 @@
 # MySQL 和 Oracle
 
-#### 一、自我总结
+## 一、自我总结
 
 1. Oracle 是大型数据库，而 MySQL 是中小型数据库；
 2. Oracle 支持多用户、大并发、大事务量的处理；
@@ -9,69 +9,64 @@
 5. Oracle 的可移植性很强；
 6. Oracle 拥有大量的内置函数，例如 SYSDATE（得到系统当前时间）
 
-#### 二、具体对比：
+## 二、具体对比
 
-##### 1. 自动增长的数据类型区别
+### 2.1 自动增长的数据类型区别
 
 * MySQL 有自动增长的数据库类型，插入记录时不用操作字段，就会自动递增
-
 * Oracle 没有自动增长的数据类型，需要建立一个自动增长的序列号，插入记录时要把序列号的下一个值赋予此字段
-  创建序列号 emp_sequence：
 
-  ````sql
-  CREATE SEQUENCE emp_sequence 
-  START WITH 1 -- 从1开始计数
-  INCREMENT BY 1 -- 每次加1
-  NOMAXVALUE -- 表示不设置最大值
-  NOCYCLE -- 一直累加，不循环
-  CACHE 10;
-  
-  INSERT INTO emp VALUES (empseq.NEXTVAL, 'LEWIS', 'CLERK', 7902, SYSDATE, 1200, NULL, 20);
-  SELECT empseq.CURRVAL FROM dual;
-  ````
+````sql
+-- 创建序列号 emp_sequence：
+CREATE SEQUENCE emp_sequence 
+START WITH 1 -- 从1开始计数
+INCREMENT BY 1 -- 每次加1
+NOMAXVALUE -- 表示不设置最大值
+NOCYCLE -- 一直累加，不循环
+CACHE 10;
 
-  `NEXTVAL –- 返回 sequence 的当前值；`
-  `CURRVAL –- 增加 sequence 的值，然后返回 sequence 值`
+INSERT INTO emp VALUES (empseq.NEXTVAL, 'LEWIS', 'CLERK', 7902, SYSDATE, 1200, NULL, 20);
+SELECT empseq.CURRVAL FROM dual;
+````
 
-##### 2. 单引号的区别
+`NEXTVAL –- 返回 sequence 的当前值；`
+`CURRVAL –- 增加 sequence 的值，然后返回 sequence 值`
+
+### 2.2 单引号的区别
 
 * MySQL 里可以用双引号包起字符串；
 * Oracle 只支持单引号，因此如果字符串文本里面包含单引号的，就必须用两个单引号示意。
 
-##### 3. 翻页的 SQL 语句的区别
+### 2.3 翻页的 SQL 语句的区别
 
-* MySQL（limit）：
+````sql
+-- MySQL（limit）
+SELECT * FROM table_name LIMIT 5, 10;
 
-  ````sql
-  SELECT * FROM table_name LIMIT 5, 10;
-  ````
+-- Oracle
+SELECT * FROM table_name OFFSET 5 ROWS FETCH FIRST 10 ROWS ONLY;
+````
 
-* Oracle：
-
-  ````sql
-  SELECT * FROM table_name OFFSET 5 ROWS FETCH FIRST 10 ROWS ONLY;
-  ````
-
-##### 4. 日期字段的区别
+### 2.4 日期字段的区别
 
 * MySQL 日期字段有 DATE 和 TIME 两种，用 now() 函数获取当前数据库的时间；
 * Oracle 日期字段只有 DATE，用 SYSDATE 获取当前数据库的时间（秒）
 
-##### 5. 空字符串的区别
+### 2.5 空字符串的区别
 
 * MySQL 的非空字段也有空的内容（即 IS NOT NULL 非空值条件可以存放空字符串''）；
 * Oracle 定义了非空字段就不容许有空的内容
 
-##### 6. 字符串模糊比较的区别
+### 2.6 字符串模糊比较的区别
 
 * MySQL：`LIKE '%字符串%';`
 * Oracle：可用`LIKE`，也可以用函数`instr(字段名, '字符串')>0`
 
-##### 7. 释放资源
+### 2.7 释放资源
 
 在程序和函数中，操作数据库的工作完成后要记得释放结果集和指针（略）
 
-#### 三、常见数据类型的对应关系
+## 三、常见数据类型的对应关系
 
 | 说明                                                 | MySQL                                                        | Oracle                                                       |
 | ---------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |

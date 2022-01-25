@@ -1,23 +1,23 @@
-#### Java对象初始化顺序
+# Java对象初始化顺序
 
 ````java
 public class Son extends Father {
-// 子类构造代码块1
-// 子类静态代码块
-// 子类构造代码块2
-// 子类构造方法
-public static void main(String[] args) {
-System.out.println("11");
-Son son = new Son();
-System.out.println("22");
-}
+    // 子类构造代码块1
+    // 子类静态代码块
+    // 子类构造代码块2
+    // 子类构造方法
+    public static void main(String[] args) {
+        System.out.println("11");
+        Son son = new Son();
+        System.out.println("22");
+    }
 }
 
 class Father {
-// 父类构造代码块1
-// 父类静态代码块
-// 父类构造代码块2
-// 父类构造方法
+    // 父类构造代码块1
+    // 父类静态代码块
+    // 父类构造代码块2
+    // 父类构造方法
 }
 ````
 

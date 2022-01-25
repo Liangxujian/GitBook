@@ -1,10 +1,10 @@
-#### Maven 配置管理
+# Maven 配置管理
 
-本篇笔记参考自博客：https://www.cnblogs.com/s1165482267/p/7928275.html
+> 本篇笔记参考自博客：[Maven学习存档（2）——settings.xml配置](https://www.cnblogs.com/s1165482267/p/7928275.html)
 
 settings.xml 配置文件是用来重新指定本地仓库位置的，需注意的是此时配置的 Maven 的本地仓库是属于用户范围的。
 
-##### 一、原始 settings.xml 文件
+### 一、原始 settings.xml 文件
 
 ````xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -278,7 +278,7 @@ under the License.
 
 该settings.xml位于maven文件夹中的conf文件夹下
 
-##### 二、配置修改
+### 二、配置修改
 
 略过第一段注释（全是废话），看第二段注释
 
@@ -330,7 +330,7 @@ under the License.
 </settings>
 ````
 
-###### proxies 标签说明
+#### proxies 标签说明
 
 proxies 标签用于代理设置，内部由 n 个 proxy 节点组成。部分公司出于安全考虑会需要员工通过代理才可上网，这时，就需配置该节点的参数了。
 
@@ -357,7 +357,7 @@ proxies 标签用于代理设置，内部由 n 个 proxy 节点组成。部分�
 </proxies>
 ````
 
-###### servers 标签说明
+#### servers 标签说明
 
 服务器，内部由 n 个 server 节点组成。有2种配置方式：一种是通过 id 匹配，username 和 password 进行认证登录；另一种是通过 id 匹配指向一个 privateKey（私钥）和一个 passphrase。
 
@@ -376,7 +376,7 @@ proxies 标签用于代理设置，内部由 n 个 proxy 节点组成。部分�
 </servers>
 ````
 
-###### mirrors 标签说明
+#### mirrors 标签说明
 
 ````xml
 <mirrors>
@@ -403,7 +403,7 @@ proxies 标签用于代理设置，内部由 n 个 proxy 节点组成。部分�
 </mirrors>
 ````
 
-###### profiles 标签说明
+#### profiles 标签说明
 
 用于覆盖在一个 POM 或者 profiles.xml 文件中的任何相同 id 的 profiles 节点。
 
@@ -439,7 +439,7 @@ proxies 标签用于代理设置，内部由 n 个 proxy 节点组成。部分�
 </profiles>
 ````
 
-###### activeProfiles 标签说明
+#### activeProfiles 标签说明
 
 activeProfile 值为 profile 中所定义的 id，在这里定义的 activeProfile 总是被激活。
 
@@ -450,7 +450,7 @@ activeProfile 值为 profile 中所定义的 id，在这里定义的 activeProfi
 </activeProfiles>
 ````
 
-##### 三、总结
+### 三、总结
 
 一般情况而言，settings.xml 无需配置太多的东西，作为优化，配置 localRepository 和 mirrors 即可
 

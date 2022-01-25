@@ -1,10 +1,12 @@
-#### base64 加密问题
+# base64 加密问题
 
-本篇笔记参考自博客：[https://blog.csdn.net/jifengwan/article/details/45460695](https://blog.csdn.net/jifengwan/article/details/45460695)
+> 本篇笔记参考自博客：[为什么Base64编码有回车换行符](https://blog.csdn.net/jifengwan/article/details/45460695)
 
 ![1566284183174](D:\GitBook\About_Java\项目总结\assets\1566284183174.png)
 
-这次遇到的情况是，使用 Base64Utils 加密后，出现了`\r\n`换行，导致数据对接出现异常。
+### 一、问题概述
+
+使用 Base64Utils 加密后，出现了`\r\n`换行，导致数据对接出现异常。
 
 ````java
 import sun.misc.BASE64Decoder;

@@ -1,6 +1,6 @@
 # SpringBoot 事务使用
 
-本篇笔记参考自博客：[SpringBoot 使用 @Transactional 注解配置事务](https://blog.csdn.net/abysscarry/article/details/80189232)
+> 本篇笔记参考自博客：[SpringBoot 使用 @Transactional 注解配置事务](https://blog.csdn.net/abysscarry/article/details/80189232)
 
 ### 一、使用
 

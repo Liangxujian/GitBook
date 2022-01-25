@@ -1,6 +1,6 @@
 # OracleDriver 报错
 
-> 本篇笔记参考自博客：[https://blog.csdn.net/yanyanhj/article/details/88352908](https://blog.csdn.net/yanyanhj/article/details/88352908)
+> 本篇笔记参考自博客：[Spring boot项目启动报错oracle.jdbc.driver.OracleDriver is deprecated，但项目还可以起来](https://blog.csdn.net/yanyanhj/article/details/88352908)
 
 ### 一、问题概述
 

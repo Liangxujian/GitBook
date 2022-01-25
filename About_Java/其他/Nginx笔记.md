@@ -14,7 +14,7 @@ Nginx 的官方网址：[http://nginx.org](http://nginx.org/)
 
 Nginx 下载地址：[http://nginx.org/en/download.html](http://nginx.org/en/download.html)
 
-![1564372112382](D:\GitBook\About_Java\其他\assets\1564372112382.png)
+![1564372112382](.\assets\1564372112382.png)
 
 如图所示，目前 Nginx 官方分为三个版本：
 
@@ -33,7 +33,7 @@ Nginx 下载地址：[http://nginx.org/en/download.html](http://nginx.org/en/dow
 
 Nginx Windows 版本为绿色版本，解压即用，无须安装。解压下载的压缩包，得到如下的目录结构：
 
-![1564372505472](D:\GitBook\About_Java\其他\assets\1564372505472.png)
+![1564372505472](.\assets\1564372505472.png)
 
 ### 2.3 基本使用
 
@@ -55,7 +55,7 @@ Nginx Windows 版本为绿色版本，解压即用，无须安装。解压下载
 
   *logs 文件夹中出现 nginx.pid 文件即为启动成功*
 
-  ![1564372938973](D:\GitBook\About_Java\其他\assets\1564372938973.png)
+  ![1564372938973](.\assets\1564372938973.png)
 
 #### 2.3.2 关闭
 
@@ -87,121 +87,11 @@ Nginx Windows 版本为绿色版本，解压即用，无须安装。解压下载
 
 *PS：大写的 V 会输出更多的版本及编译配置信息*
 
-## 三、Nginx 实战配置
+## 三、Nginx 配置实例
 
 ### 3.1 http 反向代理配置
 
-nginx.conf 配置文件如下：
-
-```bash
-#运行用户
-#user somebody;
-
-#启动进程,通常设置成和cpu的数量相等
-worker_processes  1;
-
-#全局错误日志
-error_log  D:/Tools/nginx-1.10.1/logs/error.log;
-error_log  D:/Tools/nginx-1.10.1/logs/notice.log  notice;
-error_log  D:/Tools/nginx-1.10.1/logs/info.log  info;
-
-#PID文件，记录当前启动的nginx的进程ID
-pid        D:/Tools/nginx-1.10.1/logs/nginx.pid;
-
-#工作模式及连接数上限
-events {
-    worker_connections 1024;    #单个后台worker process进程的最大并发链接数
-}
-
-#设定http服务器，利用它的反向代理功能提供负载均衡支持
-http {
-    #设定mime类型(邮件支持类型),类型由mime.types文件定义
-    include       D:/Tools/nginx-1.10.1/conf/mime.types;
-    default_type  application/octet-stream;
-
-    #设定日志
-    log_format  main  '[$remote_addr] - [$remote_user] [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
-
-    access_log    D:/Tools/nginx-1.10.1/logs/access.log main;
-    rewrite_log     on;
-
-    #sendfile 指令指定 nginx 是否调用 sendfile 函数（zero copy 方式）来输出文件，对于普通应用，
-    #必须设为 on,如果用来进行下载等应用磁盘IO重负载应用，可设置为 off，以平衡磁盘与网络I/O处理速度，降低系统的uptime.
-    sendfile        on;
-    #tcp_nopush     on;
-
-    #连接超时时间
-    keepalive_timeout  120;
-    tcp_nodelay        on;
-
-    #gzip压缩开关
-    #gzip  on;
-
-    #设定实际的服务器列表
-    upstream zp_server1{
-        server 127.0.0.1:8089;
-    }
-
-    #HTTP服务器
-    server {
-        #监听80端口，80端口是知名端口号，用于HTTP协议
-        listen       80;
-
-        #定义使用www.xx.com访问
-        server_name  www.helloworld.com;
-
-        #首页
-        index index.html
-
-        #指向webapp的目录
-        root D:\01_Workspace\Project\github\zp\SpringNotes\spring-security\spring-shiro\src\main\webapp;
-
-        #编码格式
-        charset utf-8;
-
-        #代理配置参数
-        proxy_connect_timeout 180;
-        proxy_send_timeout 180;
-        proxy_read_timeout 180;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarder-For $remote_addr;
-
-        #反向代理的路径（和upstream绑定），location 后面设置映射的路径
-        location / {
-            proxy_pass http://zp_server1;
-        }
-
-        #静态文件，nginx自己处理
-        location ~ ^/(images|javascript|js|css|flash|media|static)/ {
-            root D:\01_Workspace\Project\github\zp\SpringNotes\spring-security\spring-shiro\src\main\webapp\views;
-            #过期30天，静态文件不怎么更新，过期可以设大一点，如果频繁更新，则可以设置得小一点。
-            expires 30d;
-        }
-
-        #设定查看Nginx状态的地址
-        location /NginxStatus {
-            stub_status           on;
-            access_log            on;
-            auth_basic            "NginxStatus";
-            auth_basic_user_file  conf/htpasswd;
-        }
-
-        #禁止访问 .htxxx 文件
-        location ~ /\.ht {
-            deny all;
-        }
-
-        #错误处理页面（可选择性配置）
-        #error_page   404              /404.html;
-        #error_page   500 502 503 504  /50x.html;
-        #location = /50x.html {
-        #    root   html;
-        #}
-    }
-}
-```
+nginx.conf 配置文件示例： [Nginx config.conf.md](Nginx config.conf.md) 
 
 1. 更改 host：在 C:\Windows\System32\drivers\etc 目录下的 host 文件中添加一条 DNS 记录：
    `127.0.0.1 www.helloworld.com`
@@ -210,8 +100,46 @@ http {
 
 ### 3.2 负载均衡配置
 
+## 四、Nginx 常用功能
 
+### 4.1 Http代理，反向代理
 
-## 四、总结
+> 作为web服务器最常用的功能之一，尤其是反向代理。
+
+![23165034317](.\assets\23165034317.png)
+
+Nginx 在做反向代理时，提供性能稳定，并且能够提供配置灵活的转发功能。Nginx 可以根据不同的正则匹配，采取不同的转发策略，比如图片文件结尾的走文件服务器，动态页面走 web 服务器，只要你正则写的没问题，又有相对应的服务器解决方案，你就可以随心所欲的玩。并且 Nginx 对返回结果进行错误页跳转，异常判断等。如果被分发的服务器存在异常，他可以将请求重新转发给另外一台服务器，然后自动去除异常服务器。
+
+### 4.2 负载均衡
+
+Nginx 提供的负载均衡策略有2种：内置策略和扩展策略。内置策略为轮询，加权轮询，Ip hash。扩展策略，就天马行空，只有你想不到的没有他做不到，可以参照所有的负载均衡算法，一一找出来做下实现。
+
+#### 4.2.1 普通轮询
+
+理解为 nginx 随机分发请求。
+
+![普通轮询](.\assets\23171543052.png)
+
+#### 4.2.2 加权轮询
+
+“加权”理解为优先级，性能好的服务器配置高权重。
+
+![加权轮询](.\assets\23171725136.png)
+
+#### 4.2.3 Ip hash算法
+
+对客户端请求的ip进行hash操作，然后根据hash结果将同一个客户端ip的请求分发给同一台服务器进行处理，以解决session不共享的问题。
+
+![ip hash算法](.\assets\23172234301.png)
+
+### 4.3 web 缓存
+
+Nginx 可以对不同的文件做不同的缓存处理，配置灵活，并且支持 FastCGI_Cache，主要用于对 FastCGI 的动态程序进行缓存。配合着第三方的 ngx_cache_purge，对制定的 URL 缓存内容进行增删管理。
+
+## 五、其他
+
+惊群现象：一个网路连接到来，多个睡眠的进程被同事叫醒，但只有一个进程能获得链接，这样会影响系统性能。
+
+## 六、总结
 
 Nginx 作为轻量级、高并发、高性能的web服务器，目前使用非常广泛。一般建议 Nginx 部署在 Linux 服务器上，以发挥其高并发、高性能的特点。

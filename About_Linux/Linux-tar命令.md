@@ -3,13 +3,13 @@
 > Linux tar 命令用于备份文件。
 > tar 是用来建立，还原备份文件的工具程序，它可以加入，解开备份文件内的文件。
 
-#### 一、语法
+## 一、语法
 
 ````bash
 tar [-ABcdgGhiklmMoOpPrRsStuUvwWxzZ][-b <区块数目>][-C <目的目录>][-f <备份文件>][-F <Script文件>][-K <文件>][-L <媒体容量>][-N <日期时间>][-T <范本文件>][-V <卷册名称>][-X <范本文件>][-<设备编号><存储密度>][--after-date=<日期时间>][--atime-preserve][--backuup=<备份方式>][--checkpoint][--concatenate][--confirmation][--delete][--exclude=<范本样式>][--force-local][--group=<群组名称>][--help][--ignore-failed-read][--new-volume-script=<Script文件>][--newer-mtime][--no-recursion][--null][--numeric-owner][--owner=<用户名称>][--posix][--erve][--preserve-order][--preserve-permissions][--record-size=<区块数目>][--recursive-unlink][--remove-files][--rsh-command=<执行指令>][--same-owner][--suffix=<备份字尾字符串>][--totals][--use-compress-program=<执行指令>][--version][--volno-file=<编号文件>][文件或目录...]
 ````
 
-#### 二、部分参数
+## 二、部分参数
 
 <kbd>-c</kbd>：建立压缩档案
 
@@ -37,7 +37,7 @@ tar [-ABcdgGhiklmMoOpPrRsStuUvwWxzZ][-b <区块数目>][-C <目的目录>][-f <�
 
 <kbd>-f</kbd>：使用档案名字（切记，这个参数是最后一个参数，后面只能接档案名）
 
-#### 三、命令示例：
+## 三、命令示例
 
 ````bash
 tar -zxvf ***.tar # 解压文件
